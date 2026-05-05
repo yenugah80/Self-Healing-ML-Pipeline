@@ -1,0 +1,19 @@
+Batch,Drift_Strength,KL-Drift-Score,Before_F1,Agent_Action,Agent_Reason,Selected_Model,After_F1,Healed
+1,0.0,0.0123281513436845,0.8571428571428571,Continue,Model performance and drift score are acceptable.,Random Forest,0.8571428571428571,False
+2,0.0,0.010555908781134745,0.7777777777777778,Continue,Model performance and drift score are acceptable.,Random Forest,0.7777777777777778,False
+3,0.0,0.011720341908020291,0.5454545454545454,Tune Hyperparameters,Performance degradation detected without significant drift.,Random Forest,0.5454545454545454,False
+4,0.0,0.011173784655811434,0.8333333333333334,Continue,Model performance and drift score are acceptable.,Random Forest,0.8333333333333334,False
+5,0.0,0.012148889105424644,0.9523809523809523,Continue,Model performance and drift score are acceptable.,Random Forest,0.9523809523809523,False
+6,0.3,0.024284232750276878,0.8571428571428571,Continue,Model performance and drift score are acceptable.,Random Forest,0.8571428571428571,False
+7,0.3,0.023923625089070855,0.782608695652174,Continue,Model performance and drift score are acceptable.,Random Forest,0.782608695652174,False
+8,0.3,0.025407893744167406,0.7058823529411765,Continue,Model performance and drift score are acceptable.,Random Forest,0.7058823529411765,False
+9,0.3,0.023741955688904193,0.5714285714285714,Tune Hyperparameters,Performance degradation detected without significant drift.,Random Forest,0.5714285714285714,False
+10,0.3,0.02536453766331441,0.9230769230769231,Continue,Model performance and drift score are acceptable.,Random Forest,0.9230769230769231,False
+11,0.7,0.06270450552701108,1.0,Warning,Drift detected but performance remains acceptable.,Random Forest,1.0,False
+12,0.7,0.062310625853300626,0.5454545454545454,Retrain,Performance degradation and significant drift detected.,Random Forest,0.8571428571428571,True
+13,0.7,0.06112913875828508,0.8,Warning,Drift detected but performance remains acceptable.,Random Forest,0.8,False
+14,0.7,0.06238139061908006,0.8,Warning,Drift detected but performance remains acceptable.,Random Forest,0.8,False
+15,0.7,0.06495805652397107,0.8,Warning,Drift detected but performance remains acceptable.,Random Forest,0.8,False
+16,0.7,0.06373242516102288,0.6153846153846154,Retrain,Performance degradation and significant drift detected.,Random Forest,0.9333333333333333,True
+17,0.7,0.062042020573978146,0.8421052631578947,Warning,Drift detected but performance remains acceptable.,Random Forest,0.8421052631578947,False
+18,0.7,0.13966441496594748,0.0,Manual Review,Critical drift detected; human review recommended.,Random Forest,0.0,False

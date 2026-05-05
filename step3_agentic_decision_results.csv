@@ -1,0 +1,19 @@
+Batch,Accuracy,Precision,Recall,F1-Score,ROC-AUC,KL-Drift-Score,Drift_Strength,Agent_Action,Agent_Reason
+1,0.9996,1.0,0.75,0.8571428571428571,0.8726963141025641,0.0123281513436845,0.0,Continue,Model performance and drift score are within acceptable limits.
+2,0.9992,1.0,0.6363636363636364,0.7777777777777778,0.906640062683358,0.0105559087811347,0.0,Continue,Model performance and drift score are within acceptable limits.
+3,0.999,1.0,0.375,0.5454545454545454,0.9349834735576922,0.0117203419080202,0.0,Tune Hyperparameters,Performance degradation detected without significant drift.
+4,0.9996,1.0,0.7142857142857143,0.8333333333333334,0.99997138851535,0.0111737846558114,0.0,Continue,Model performance and drift score are within acceptable limits.
+5,0.9998,1.0,0.9090909090909092,0.9523809523809524,0.953789245430857,0.0121488891054246,0.0,Continue,Model performance and drift score are within acceptable limits.
+6,0.9996,1.0,0.75,0.8571428571428571,0.9968449519230768,0.0234723864583588,0.3,Continue,Model performance and drift score are within acceptable limits.
+7,0.999,1.0,0.6428571428571429,0.782608695652174,0.9605609993696635,0.0230094596911746,0.3,Continue,Model performance and drift score are within acceptable limits.
+8,0.999,1.0,0.5454545454545454,0.7058823529411765,0.8577051331110261,0.0266652837773391,0.3,Continue,Model performance and drift score are within acceptable limits.
+9,0.9994,0.6666666666666666,0.5,0.5714285714285714,0.9996997598078464,0.0230317908950204,0.3,Tune Hyperparameters,Performance degradation detected without significant drift.
+10,0.9998,1.0,0.8571428571428571,0.9230769230769232,1.0,0.0262916167863021,0.3,Continue,Model performance and drift score are within acceptable limits.
+11,1.0,1.0,1.0,1.0,1.0,0.0621232107533432,0.7,Warning,Drift detected but model performance remains acceptable.
+12,0.9994,1.0,0.625,0.7692307692307693,0.929336939102564,0.0623482665584364,0.7,Warning,Drift detected but model performance remains acceptable.
+13,0.9994,1.0,0.75,0.8571428571428571,0.9535134322373696,0.0610484612505206,0.7,Warning,Drift detected but model performance remains acceptable.
+14,0.9996,1.0,0.6666666666666666,0.8,0.9894373247897476,0.0620018964605749,0.7,Warning,Drift detected but model performance remains acceptable.
+15,0.9998,1.0,0.8333333333333334,0.9090909090909092,1.0,0.0649612519062491,0.7,Warning,Drift detected but model performance remains acceptable.
+16,0.999,0.8,0.5,0.6153846153846154,0.7900265424679487,0.0628217779607589,0.7,Retrain,Performance degradation and significant drift detected.
+17,0.9992,1.0,0.6363636363636364,0.7777777777777778,0.9434027587966254,0.0639099966900253,0.7,Warning,Drift detected but model performance remains acceptable.
+18,1.0,0.0,0.0,0.0,,0.1372360796168723,0.7,Manual Review,Critical drift detected; human review recommended.
