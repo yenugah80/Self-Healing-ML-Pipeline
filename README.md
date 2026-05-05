@@ -25,34 +25,9 @@ The framework is evaluated on the **Credit Card Fraud Detection** dataset (highl
 
 ## Architecture
 
-```
-                ┌──────────────────┐
-                │  Incoming Data   │
-                │   (Batch t)      │
-                └────────┬─────────┘
-                         ▼
-        ┌────────────────────────────────┐
-        │   Performance Monitoring       │  → F1, Precision, Recall, ROC-AUC
-        │   Drift Detection (KL Div.)    │  → KL(P‖Q)
-        └────────────────┬───────────────┘
-                         ▼
-        ┌────────────────────────────────┐
-        │   Agentic AI Decision Engine   │
-        │   Rules over (F1_t, KL_t)      │
-        └────────────────┬───────────────┘
-                         ▼
-   ┌──────────┬──────────┬─────────┬──────────┬──────────────┐
-   │ Continue │ Warning  │  Tune   │ Retrain  │ Manual Review│
-   └──────────┴──────────┴─────────┴────┬─────┴──────────────┘
-                                        ▼
-                      ┌──────────────────────────────┐
-                      │  Retraining Engine           │
-                      │  (RF / XGBoost / LogReg)     │
-                      │  Pick argmax F1 → Deploy     │
-                      └────────────┬─────────────────┘
-                                   ▼
-                          (Feedback / Audit Log)
-```
+![Architecture of Self-Healing ML Pipeline using Agentic AI](architecture.png)
+
+The pipeline is organized into six stages: (1) **Data Ingestion** streams batches into the system, (2) the **Monitoring Module** computes performance metrics and KL-divergence drift scores, (3) the **Agentic Decision Controller** maps `(F1, KL)` to one of five actions, (4) the **Action Executor** carries out the chosen action, (5) the **Model Repository** versions candidates and tracks the best production model, and (6) the **Deployment Module** promotes the selected model. A **feedback loop** routes new data and outcomes back to the monitoring module, closing the self-healing cycle.
 
 ### Decision rules (Section 5.7 of the paper)
 
