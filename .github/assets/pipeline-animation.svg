@@ -23,31 +23,33 @@
     .step-3 .node { animation-delay: 4s; }
     .step-4 .node { animation-delay: 6s; }
     .step-5 .node { animation-delay: 8s; }
-    .flow-track { stroke: #263d52; stroke-width: 5; stroke-linecap: round; opacity: .9; }
-    .flow-line {
+    .connector-track {
+      stroke: #263d52;
+      stroke-width: 4;
+      stroke-linecap: round;
+      stroke-dasharray: 4 12;
+      opacity: .65;
+    }
+    .connector {
       stroke: url(#flow);
       stroke-width: 5;
       stroke-linecap: round;
-      stroke-dasharray: 944;
-      stroke-dashoffset: 944;
-      animation: draw-flow 10s linear infinite;
+      stroke-dasharray: 6 13;
+      stroke-dashoffset: 160;
+      marker-end: url(#arrow);
+      opacity: 0;
+      animation: segment-flow 10s ease-in-out infinite;
     }
-    .flow-dot {
-      offset-path: path("M168 274 H1112");
-      animation: travel 10s linear infinite;
-    }
+    .seg-1 { animation-delay: 0s; }
+    .seg-2 { animation-delay: 2s; }
+    .seg-3 { animation-delay: 4s; }
+    .seg-4 { animation-delay: 6s; }
     .spark { animation: spark 10s ease-in-out infinite; transform-origin: center; }
-    @keyframes travel {
-      0% { offset-distance: 0%; opacity: 0; }
-      4% { opacity: 1; }
-      96% { opacity: 1; }
-      100% { offset-distance: 100%; opacity: 0; }
-    }
-    @keyframes draw-flow {
-      0% { stroke-dashoffset: 944; opacity: .25; }
-      10% { opacity: 1; }
-      90% { stroke-dashoffset: 0; opacity: 1; }
-      100% { stroke-dashoffset: 0; opacity: .25; }
+    @keyframes segment-flow {
+      0% { opacity: 1; stroke-dashoffset: 48; }
+      16% { opacity: 1; stroke-dashoffset: -48; }
+      22% { opacity: 0; stroke-dashoffset: -36; }
+      24%, 100% { opacity: 0; stroke-dashoffset: 48; }
     }
     @keyframes stage-focus {
       0%, 100% { opacity: .48; transform: translateY(0); }
@@ -64,7 +66,8 @@
       84%, 96% { transform: scale(1.18); opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .flow-dot, .flow-line, .stage-group, .stage-group .node, .spark { animation: none; }
+      .connector, .stage-group, .stage-group .node, .spark { animation: none; }
+      .connector { opacity: 1; stroke-dashoffset: 0; }
       .stage-group { opacity: 1; }
     }
   </style>
@@ -85,6 +88,9 @@
       <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.2 0 0 0 0 0.85 0 0 0 0 0.95 0 0 0 0.55 0"/>
       <feBlend in="SourceGraphic" mode="screen"/>
     </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#35e5d4"/>
+    </marker>
   </defs>
 
   <rect width="1280" height="420" rx="30" fill="url(#bg)"/>
@@ -103,9 +109,14 @@
 
   <g transform="translate(72 206)">
     <rect width="1136" height="128" rx="28" class="panel"/>
-    <path class="flow-track" d="M96 68 H1040"/>
-    <path class="flow-line" d="M96 68 H1040"/>
-    <circle class="flow-dot" r="8" fill="#35e5d4" filter="url(#glow)"/>
+    <path class="connector-track" d="M130 68 H286"/>
+    <path class="connector-track" d="M358 68 H514"/>
+    <path class="connector-track" d="M586 68 H742"/>
+    <path class="connector-track" d="M814 68 H970"/>
+    <path class="connector seg-1" d="M130 68 H286"/>
+    <path class="connector seg-2" d="M358 68 H514"/>
+    <path class="connector seg-3" d="M586 68 H742"/>
+    <path class="connector seg-4" d="M814 68 H970"/>
 
     <g class="stage-group step-1" transform="translate(58 24)">
       <text x="-2" y="20" class="stage">Streaming</text>
