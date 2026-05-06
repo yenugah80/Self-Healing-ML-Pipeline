@@ -11,32 +11,61 @@
     .metric { font: 800 15px Inter, Segoe UI, Arial, sans-serif; fill: #dff7ff; letter-spacing: 0; }
     .panel { fill: #0f1d2c; stroke: #2b435a; stroke-width: 1.2; }
     .node { fill: #10263a; stroke: #3c5870; stroke-width: 1.4; }
-    .flow-line { stroke: url(#flow); stroke-width: 5; stroke-linecap: round; opacity: .82; }
+    .stage-group { opacity: .48; animation: stage-focus 10s ease-in-out infinite; transform-origin: center; }
+    .step-1 { animation-delay: 0s; }
+    .step-2 { animation-delay: 2s; }
+    .step-3 { animation-delay: 4s; }
+    .step-4 { animation-delay: 6s; }
+    .step-5 { animation-delay: 8s; }
+    .stage-group .node { animation: node-focus 10s ease-in-out infinite; }
+    .step-1 .node { animation-delay: 0s; }
+    .step-2 .node { animation-delay: 2s; }
+    .step-3 .node { animation-delay: 4s; }
+    .step-4 .node { animation-delay: 6s; }
+    .step-5 .node { animation-delay: 8s; }
+    .flow-track { stroke: #263d52; stroke-width: 5; stroke-linecap: round; opacity: .9; }
+    .flow-line {
+      stroke: url(#flow);
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-dasharray: 944;
+      stroke-dashoffset: 944;
+      animation: draw-flow 10s linear infinite;
+    }
     .flow-dot {
       offset-path: path("M168 274 H1112");
-      animation: travel 4.8s linear infinite;
+      animation: travel 10s linear infinite;
     }
-    .flow-dot.two { animation-delay: -1.2s; }
-    .flow-dot.three { animation-delay: -2.4s; }
-    .flow-dot.four { animation-delay: -3.6s; }
-    .pulse { animation: pulse 2.4s ease-in-out infinite; transform-origin: center; }
-    .spark { animation: spark 2.7s ease-in-out infinite; transform-origin: center; }
+    .spark { animation: spark 10s ease-in-out infinite; transform-origin: center; }
     @keyframes travel {
-      from { offset-distance: 0%; opacity: 0; }
-      10% { opacity: 1; }
-      88% { opacity: 1; }
-      to { offset-distance: 100%; opacity: 0; }
+      0% { offset-distance: 0%; opacity: 0; }
+      4% { opacity: 1; }
+      96% { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; }
     }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: .86; }
-      50% { transform: scale(1.04); opacity: 1; }
+    @keyframes draw-flow {
+      0% { stroke-dashoffset: 944; opacity: .25; }
+      10% { opacity: 1; }
+      90% { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: 0; opacity: .25; }
+    }
+    @keyframes stage-focus {
+      0%, 100% { opacity: .48; transform: translateY(0); }
+      4%, 16% { opacity: 1; transform: translateY(-3px); }
+      24% { opacity: .48; transform: translateY(0); }
+    }
+    @keyframes node-focus {
+      0%, 100% { fill: #10263a; stroke: #3c5870; stroke-width: 1.4; }
+      4%, 16% { fill: #123b38; stroke: #35e5d4; stroke-width: 3; }
+      24% { fill: #10263a; stroke: #3c5870; stroke-width: 1.4; }
     }
     @keyframes spark {
-      0%, 100% { transform: scale(.82); opacity: .4; }
-      50% { transform: scale(1.16); opacity: 1; }
+      0%, 76%, 100% { transform: scale(.72); opacity: .2; }
+      84%, 96% { transform: scale(1.18); opacity: 1; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .flow-dot, .pulse, .spark { animation: none; }
+      .flow-dot, .flow-line, .stage-group, .stage-group .node, .spark { animation: none; }
+      .stage-group { opacity: 1; }
     }
   </style>
 
@@ -74,37 +103,35 @@
 
   <g transform="translate(72 206)">
     <rect width="1136" height="128" rx="28" class="panel"/>
+    <path class="flow-track" d="M96 68 H1040"/>
     <path class="flow-line" d="M96 68 H1040"/>
     <circle class="flow-dot" r="8" fill="#35e5d4" filter="url(#glow)"/>
-    <circle class="flow-dot two" r="8" fill="#49a6ff" filter="url(#glow)"/>
-    <circle class="flow-dot three" r="8" fill="#4ade80" filter="url(#glow)"/>
-    <circle class="flow-dot four" r="8" fill="#ff6aa2" filter="url(#glow)"/>
 
-    <g transform="translate(58 24)">
+    <g class="stage-group step-1" transform="translate(58 24)">
       <text x="-2" y="20" class="stage">Streaming</text>
       <circle class="node pulse" cx="36" cy="44" r="26"/>
       <text x="4" y="98" class="stage-sub">18 batches</text>
     </g>
 
-    <g transform="translate(286 24)">
+    <g class="stage-group step-2" transform="translate(286 24)">
       <text x="-6" y="20" class="stage">Monitoring</text>
       <circle class="node" cx="36" cy="44" r="26"/>
       <text x="-18" y="98" class="stage-sub">F1, ROC-AUC, KL</text>
     </g>
 
-    <g transform="translate(514 24)">
+    <g class="stage-group step-3" transform="translate(514 24)">
       <text x="-30" y="20" class="stage">Agent Decision</text>
       <circle class="node" cx="36" cy="44" r="26"/>
       <text x="-12" y="98" class="stage-sub">continue or heal</text>
     </g>
 
-    <g transform="translate(742 24)">
+    <g class="stage-group step-4" transform="translate(742 24)">
       <text x="-14" y="20" class="stage">Retraining</text>
       <circle class="node" cx="36" cy="44" r="26"/>
       <text x="-18" y="98" class="stage-sub">LR, RF, XGBoost</text>
     </g>
 
-    <g transform="translate(970 24)">
+    <g class="stage-group step-5" transform="translate(970 24)">
       <text x="2" y="20" class="stage">Deploy</text>
       <circle class="node pulse" cx="36" cy="44" r="26"/>
       <circle class="spark" cx="36" cy="44" r="8" fill="#4ade80" filter="url(#glow)"/>
