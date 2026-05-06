@@ -1,4 +1,4 @@
-<svg width="1280" height="720" viewBox="0 0 1280 720" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<svg width="1280" height="680" viewBox="0 0 1280 680" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
   <title id="title">Self-healing ML results dashboard</title>
   <desc id="desc">A visual dashboard summarizing baseline model performance, self-healing improvement, recovery events, and agent decision distribution.</desc>
   <style>
@@ -43,7 +43,7 @@
     </linearGradient>
   </defs>
 
-  <rect width="1280" height="720" rx="28" fill="url(#bg)"/>
+  <rect width="1280" height="680" rx="28" fill="url(#bg)"/>
   <circle cx="1080" cy="80" r="170" fill="#3eead9" opacity="0.05"/>
   <circle cx="115" cy="650" r="220" fill="#49a6ff" opacity="0.06"/>
 
@@ -70,7 +70,7 @@
     <rect class="bar b3" x="198" y="185" width="176" height="20" rx="10" fill="url(#pink)"/>
     <text x="480" y="200" class="muted">0.5305</text>
 
-    <rect x="28" y="214" width="188" height="26" rx="13" fill="#bef264"/>
+    <rect x="28" y="214" width="225" height="26" rx="13" fill="#bef264"/>
     <text x="46" y="232" class="win">Winner: Random Forest</text>
   </g>
 
@@ -99,35 +99,29 @@
     <text x="466" y="226" class="label">Success: 100%</text>
   </g>
 
-  <g transform="translate(58 422)">
-    <rect width="544" height="226" rx="22" class="card"/>
+  <g transform="translate(58 406)">
+    <rect width="544" height="232" rx="22" class="card"/>
     <text x="28" y="42" class="section">Recovery events</text>
     <text x="28" y="70" class="muted">Every retraining event improved F1 under severe drift.</text>
 
-    <line x1="78" y1="98" x2="78" y2="188" class="grid"/>
-    <line x1="258" y1="98" x2="258" y2="188" class="grid"/>
-    <line x1="438" y1="98" x2="438" y2="188" class="grid"/>
+    <rect x="28" y="88" width="488" height="40" rx="13" class="inner"/>
+    <text x="48" y="114" class="label">Batch 12</text>
+    <text x="150" y="114" class="muted">0.6667 -> 0.8571</text>
+    <text x="394" y="115" class="smallmetric">+28.6%</text>
 
-    <circle cx="78" cy="154" r="36" fill="#12304a" stroke="#49a6ff"/>
-    <text x="57" y="150" class="muted">Batch</text>
-    <text x="60" y="176" class="smallmetric">12</text>
-    <text x="132" y="145" class="label">0.6667 -> 0.8571</text>
-    <text x="132" y="171" class="metric">+28.6%</text>
+    <rect x="28" y="138" width="488" height="40" rx="13" class="inner"/>
+    <text x="48" y="164" class="label">Batch 15</text>
+    <text x="150" y="164" class="muted">0.6667 -> 0.9091</text>
+    <text x="394" y="165" class="smallmetric">+36.4%</text>
 
-    <circle cx="258" cy="154" r="36" fill="#123b38" stroke="#3eead9"/>
-    <text x="237" y="150" class="muted">Batch</text>
-    <text x="240" y="176" class="smallmetric">15</text>
-    <text x="312" y="145" class="label">0.6667 -> 0.9091</text>
-    <text x="312" y="171" class="metric">+36.4%</text>
-
-    <circle cx="438" cy="154" r="36" fill="#273516" stroke="#bef264"/>
-    <text x="417" y="150" class="muted">Batch</text>
-    <text x="420" y="176" class="smallmetric">16</text>
-    <text x="28" y="210" class="label">Batch 16 delivered the largest recovery: 0.6154 -> 1.0000 (+62.5%).</text>
+    <rect x="28" y="188" width="488" height="40" rx="13" fill="#172717" stroke="#bef264" stroke-opacity="0.5"/>
+    <text x="48" y="214" class="label">Batch 16</text>
+    <text x="150" y="214" class="muted">0.6154 -> 1.0000</text>
+    <text x="394" y="215" class="smallmetric">+62.5%</text>
   </g>
 
-  <g transform="translate(632 422)">
-    <rect width="590" height="226" rx="22" class="card"/>
+  <g transform="translate(632 406)">
+    <rect width="590" height="232" rx="22" class="card"/>
     <text x="28" y="42" class="section">Agent decisions across 18 batches</text>
     <text x="28" y="70" class="muted">The controller mostly continued, but intervened when drift and F1 signaled risk.</text>
 

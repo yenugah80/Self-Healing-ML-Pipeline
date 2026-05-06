@@ -141,21 +141,15 @@ flowchart LR
 ## Key Results
 
 <p align="justify">
-The experiment produces three takeaways: Random Forest is the strongest initial production model, severe drift causes measurable performance decay, and the self-healing loop restores F1-score after autonomous retraining. The visual summary below is designed for quick scanning; the full numeric tables are available in the expandable sections.
+The experiment produces three takeaways: Random Forest is the strongest initial production model, severe drift causes measurable performance decay, and the self-healing loop restores F1-score after autonomous retraining. The visual summary below is designed for quick scanning; detailed metrics are available only in the expandable sections.
 </p>
 
 <img src=".github/assets/results-dashboard.svg" alt="Visual summary of baseline model selection, self-healing impact, recovery events, and agent decisions" width="100%"/>
 
-<table>
-  <tr>
-    <td width="50%">
-      <img src="chart1_baseline_f1.png" alt="Baseline F1 comparison chart" width="100%"/>
-    </td>
-    <td width="50%">
-      <img src="chart5_self_healing.png" alt="Before and after self-healing chart" width="100%"/>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <img src="chart1_baseline_f1.png" alt="Baseline F1 comparison chart" width="45%"/>
+  <img src="chart5_self_healing.png" alt="Before and after self-healing chart" width="45%"/>
+</p>
 
 <p align="justify">
 Random Forest was selected as the initial production model because it achieved the strongest F1-score on a highly imbalanced fraud detection task. During severe drift, the agent triggered retraining three times. Each intervention improved F1-score, with the strongest recovery occurring in batch 16.
@@ -166,48 +160,40 @@ Random Forest was selected as the initial production model because it achieved t
 
 Three candidate models were trained on 199,364 transactions and evaluated on 85,443 holdout transactions.
 
-| Model | Accuracy | Precision | Recall | F1-Score | ROC-AUC | Interpretation |
-|:--|:--:|:--:|:--:|:--:|:--:|:--|
-| Logistic Regression | 97.86% | 0.0670 | **0.8784** | 0.1245 | 0.9680 | High recall, low precision |
-| **Random Forest** | **99.94%** | **0.9720** | 0.7027 | **0.8157** | 0.9275 | Best production baseline |
-| XGBoost | 99.74% | 0.3853 | 0.8514 | 0.5305 | **0.9732** | Strong ROC-AUC, weaker F1 |
+- **Logistic Regression:** Accuracy 97.86%, Precision 0.0670, Recall 0.8784, F1 0.1245, ROC-AUC 0.9680.
+- **Random Forest:** Accuracy 99.94%, Precision 0.9720, Recall 0.7027, F1 0.8157, ROC-AUC 0.9275. Selected as the production baseline.
+- **XGBoost:** Accuracy 99.74%, Precision 0.3853, Recall 0.8514, F1 0.5305, ROC-AUC 0.9732.
 
 </details>
 
 <details>
 <summary><strong>Self-healing impact</strong></summary>
 
-| Metric | Value |
-|:--|:--:|
-| Average F1 before healing | `0.7255` |
-| Average F1 after healing | `0.7709` |
-| Net F1 improvement | `+0.0454` |
-| Retraining events triggered | 3 |
-| Successful healing events | 3 / 3 |
+- Average F1 before healing: `0.7255`
+- Average F1 after healing: `0.7709`
+- Net F1 improvement: `+0.0454`
+- Retraining events triggered: `3`
+- Successful healing events: `3 / 3`
 
 </details>
 
 <details>
 <summary><strong>Recovery events</strong></summary>
 
-| Batch | Drift Strength | F1 Before | F1 After | Recovery |
-|:--:|:--:|:--:|:--:|:--:|
-| 12 | 0.7 severe | 0.6667 | 0.8571 | **+28.6%** |
-| 15 | 0.7 severe | 0.6667 | 0.9091 | **+36.4%** |
-| 16 | 0.7 severe | 0.6154 | **1.0000** | **+62.5%** |
+- **Batch 12:** severe drift, F1 improved from `0.6667` to `0.8571` for a `+28.6%` recovery.
+- **Batch 15:** severe drift, F1 improved from `0.6667` to `0.9091` for a `+36.4%` recovery.
+- **Batch 16:** severe drift, F1 improved from `0.6154` to `1.0000` for a `+62.5%` recovery.
 
 </details>
 
 <details>
 <summary><strong>Agent decision distribution</strong></summary>
 
-| Action | Count | Share |
-|:--|:--:|:--:|
-| Continue | 8 | 44.4% |
-| Warning | 4 | 22.2% |
-| Retrain | 3 | 16.7% |
-| Tune Hyperparameters | 2 | 11.1% |
-| Manual Review | 1 | 5.6% |
+- Continue: `8` batches, `44.4%`
+- Warning: `4` batches, `22.2%`
+- Retrain: `3` batches, `16.7%`
+- Tune Hyperparameters: `2` batches, `11.1%`
+- Manual Review: `1` batch, `5.6%`
 
 </details>
 
@@ -219,13 +205,27 @@ Three candidate models were trained on 199,364 transactions and evaluated on 85,
 The repository includes generated figures for the main experimental outputs. These charts are useful when presenting the work because they show the full story: baseline selection, performance degradation, drift pressure, agent behavior, and recovery after retraining.
 </p>
 
-| Figure | Preview | What it shows |
-|:--|:--:|:--|
-| Baseline F1 comparison | <img src="chart1_baseline_f1.png" alt="Baseline F1 comparison" width="220"/> | Random Forest provides the strongest F1-score among the evaluated models. |
-| F1 trend | <img src="chart2_f1_trend.png" alt="F1 trend with self-healing" width="220"/> | Model performance across streaming batches and healing points. |
-| Drift vs. F1 | <img src="chart3_drift_vs_f1.png" alt="Drift versus F1" width="220"/> | Relationship between KL divergence and performance decay. |
-| Agent distribution | <img src="chart4_agent_distribution.png" alt="Agent action distribution" width="220"/> | Frequency of continue, warning, tune, retrain, and manual review actions. |
-| Self-healing effect | <img src="chart5_self_healing.png" alt="Self-healing before and after retraining" width="220"/> | Before-and-after F1 recovery for retraining events. |
+<p align="center">
+  <img src="chart1_baseline_f1.png" alt="Baseline F1 comparison" width="31%"/>
+  <img src="chart2_f1_trend.png" alt="F1 trend with self-healing" width="31%"/>
+  <img src="chart3_drift_vs_f1.png" alt="Drift versus F1" width="31%"/>
+</p>
+
+<p align="center">
+  <img src="chart4_agent_distribution.png" alt="Agent action distribution" width="45%"/>
+  <img src="chart5_self_healing.png" alt="Self-healing before and after retraining" width="45%"/>
+</p>
+
+<details>
+<summary><strong>What each figure shows</strong></summary>
+
+- **Baseline F1 comparison:** Random Forest provides the strongest F1-score among the evaluated models.
+- **F1 trend:** The production model is tracked across streaming batches and healing points.
+- **Drift vs. F1:** KL divergence is compared against model performance decay.
+- **Agent distribution:** The controller's continue, warning, tune, retrain, and manual review actions are summarized.
+- **Self-healing effect:** Before-and-after F1 recovery is shown for retraining events.
+
+</details>
 
 ---
 
