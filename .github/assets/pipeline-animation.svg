@@ -5,8 +5,8 @@
   <style>
     .title { font: 800 46px Inter, Segoe UI, Arial, sans-serif; fill: #f7fbff; letter-spacing: 0; }
     .subtitle { font: 500 18px Inter, Segoe UI, Arial, sans-serif; fill: #b5c8d9; letter-spacing: 0; }
-    .stage { font: 800 18px Inter, Segoe UI, Arial, sans-serif; fill: #f7fbff; letter-spacing: 0; }
-    .stage-sub { font: 500 13px Inter, Segoe UI, Arial, sans-serif; fill: #aec1d2; letter-spacing: 0; }
+    .stage { font: 800 16px Inter, Segoe UI, Arial, sans-serif; fill: #f7fbff; letter-spacing: 0; text-anchor: middle; }
+    .stage-sub { font: 500 12px Inter, Segoe UI, Arial, sans-serif; fill: #aec1d2; letter-spacing: 0; text-anchor: middle; }
     .chip { font: 800 13px Inter, Segoe UI, Arial, sans-serif; fill: #061322; letter-spacing: 0; }
     .metric { font: 800 15px Inter, Segoe UI, Arial, sans-serif; fill: #dff7ff; letter-spacing: 0; }
     .panel { fill: #0f1d2c; stroke: #2b435a; stroke-width: 1.2; }
@@ -53,39 +53,39 @@
   <g transform="translate(72 206)">
     <rect width="1136" height="128" rx="28" class="panel"/>
 
-    <path class="connector" d="M142 68 H282"/>
-    <path class="connector" d="M370 68 H510"/>
-    <path class="connector" d="M598 68 H738"/>
-    <path class="connector" d="M826 68 H966"/>
+    <path class="connector" d="M142 68 H262"/>
+    <path class="connector" d="M370 68 H490"/>
+    <path class="connector" d="M598 68 H718"/>
+    <path class="connector" d="M826 68 H946"/>
 
     <g transform="translate(58 24)">
-      <text x="-8" y="20" class="stage">Streaming</text>
+      <text x="36" y="20" class="stage">Streaming</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="0" y="98" class="stage-sub">18 batches</text>
+      <text x="36" y="98" class="stage-sub">18 batches</text>
     </g>
 
     <g transform="translate(286 24)">
-      <text x="-14" y="20" class="stage">Monitoring</text>
+      <text x="36" y="20" class="stage">Monitoring</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="-20" y="98" class="stage-sub">F1, ROC-AUC, KL</text>
+      <text x="36" y="98" class="stage-sub">F1, ROC-AUC, KL</text>
     </g>
 
     <g transform="translate(514 24)">
-      <text x="-38" y="20" class="stage">Agent Decision</text>
+      <text x="36" y="20" class="stage">Agent Decision</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="-14" y="98" class="stage-sub">continue or heal</text>
+      <text x="36" y="98" class="stage-sub">continue or heal</text>
     </g>
 
     <g transform="translate(742 24)">
-      <text x="-20" y="20" class="stage">Retraining</text>
+      <text x="36" y="20" class="stage">Retraining</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="-20" y="98" class="stage-sub">LR, RF, XGBoost</text>
+      <text x="36" y="98" class="stage-sub">LR, RF, XGBoost</text>
     </g>
 
     <g transform="translate(970 24)">
-      <text x="-4" y="20" class="stage">Deploy</text>
+      <text x="36" y="20" class="stage">Deploy</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="-24" y="98" class="stage-sub">feedback loop</text>
+      <text x="36" y="98" class="stage-sub">feedback loop</text>
     </g>
   </g>
 
