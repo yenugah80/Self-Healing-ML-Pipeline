@@ -140,33 +140,55 @@ flowchart LR
 
 ## Key Results
 
-### Baseline Model Comparison
+<p align="justify">
+The experiment produces three takeaways: Random Forest is the strongest initial production model, severe drift causes measurable performance decay, and the self-healing loop restores F1-score after autonomous retraining. The visual summary below is designed for quick scanning; the full numeric tables are available in the expandable sections.
+</p>
+
+<img src=".github/assets/results-dashboard.svg" alt="Visual summary of baseline model selection, self-healing impact, recovery events, and agent decisions" width="100%"/>
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="chart1_baseline_f1.png" alt="Baseline F1 comparison chart" width="100%"/>
+    </td>
+    <td width="50%">
+      <img src="chart5_self_healing.png" alt="Before and after self-healing chart" width="100%"/>
+    </td>
+  </tr>
+</table>
+
+<p align="justify">
+Random Forest was selected as the initial production model because it achieved the strongest F1-score on a highly imbalanced fraud detection task. During severe drift, the agent triggered retraining three times. Each intervention improved F1-score, with the strongest recovery occurring in batch 16.
+</p>
+
+<details>
+<summary><strong>Baseline model comparison</strong></summary>
 
 Three candidate models were trained on 199,364 transactions and evaluated on 85,443 holdout transactions.
 
 | Model | Accuracy | Precision | Recall | F1-Score | ROC-AUC | Interpretation |
 |:--|:--:|:--:|:--:|:--:|:--:|:--|
-| Logistic Regression | 97.86% | 0.0670 | **0.8784** | 0.1245 | 0.9680 | High recall, weak precision |
+| Logistic Regression | 97.86% | 0.0670 | **0.8784** | 0.1245 | 0.9680 | High recall, low precision |
 | **Random Forest** | **99.94%** | **0.9720** | 0.7027 | **0.8157** | 0.9275 | Best production baseline |
-| XGBoost | 99.74% | 0.3853 | 0.8514 | 0.5305 | **0.9732** | Strong ranking, weaker F1 |
+| XGBoost | 99.74% | 0.3853 | 0.8514 | 0.5305 | **0.9732** | Strong ROC-AUC, weaker F1 |
 
-<p align="justify">
-Random Forest was selected as the initial production model because it achieved the best F1-score, which is more informative than accuracy for this highly imbalanced fraud detection problem.
-</p>
+</details>
 
-### Self-Healing Impact
+<details>
+<summary><strong>Self-healing impact</strong></summary>
 
-<table>
-  <tr>
-    <td align="center" width="20%"><strong>Before Healing</strong><br><br><code>0.7255</code><br>Average F1</td>
-    <td align="center" width="20%"><strong>After Healing</strong><br><br><code>0.7709</code><br>Average F1</td>
-    <td align="center" width="20%"><strong>Net Gain</strong><br><br><code>+0.0454</code><br>F1 improvement</td>
-    <td align="center" width="20%"><strong>Retrains</strong><br><br><code>3</code><br>Batches 12, 15, 16</td>
-    <td align="center" width="20%"><strong>Success</strong><br><br><code>100%</code><br>3 of 3 events</td>
-  </tr>
-</table>
+| Metric | Value |
+|:--|:--:|
+| Average F1 before healing | `0.7255` |
+| Average F1 after healing | `0.7709` |
+| Net F1 improvement | `+0.0454` |
+| Retraining events triggered | 3 |
+| Successful healing events | 3 / 3 |
 
-### Recovery Events
+</details>
+
+<details>
+<summary><strong>Recovery events</strong></summary>
 
 | Batch | Drift Strength | F1 Before | F1 After | Recovery |
 |:--:|:--:|:--:|:--:|:--:|
@@ -174,15 +196,20 @@ Random Forest was selected as the initial production model because it achieved t
 | 15 | 0.7 severe | 0.6667 | 0.9091 | **+36.4%** |
 | 16 | 0.7 severe | 0.6154 | **1.0000** | **+62.5%** |
 
-### Agent Decision Distribution
+</details>
 
-```text
-Continue              8 / 18  | ####################....
-Warning               4 / 18  | ##########..............
-Retrain               3 / 18  | #######.................
-Tune Hyperparameters  2 / 18  | #####...................
-Manual Review         1 / 18  | ##......................
-```
+<details>
+<summary><strong>Agent decision distribution</strong></summary>
+
+| Action | Count | Share |
+|:--|:--:|:--:|
+| Continue | 8 | 44.4% |
+| Warning | 4 | 22.2% |
+| Retrain | 3 | 16.7% |
+| Tune Hyperparameters | 2 | 11.1% |
+| Manual Review | 1 | 5.6% |
+
+</details>
 
 ---
 
