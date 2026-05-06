@@ -13,7 +13,7 @@
 [![XGBoost](https://img.shields.io/badge/XGBoost-3.2.0-FF6600?style=for-the-badge&logo=xgboost&logoColor=white)](https://xgboost.readthedocs.io)
 [![pandas](https://img.shields.io/badge/pandas-2.2.3-150458?style=for-the-badge&logo=pandas&logoColor=white)](https://pandas.pydata.org)
 
-[![Conference](https://img.shields.io/badge/IBAC_2026-Published-8A2BE2?style=for-the-badge&logo=academia&logoColor=white)](#citation)
+[![Conference](https://img.shields.io/badge/IBAC_2026-8A2BE2?style=for-the-badge&logo=academia&logoColor=white)](#citation)
 [![Dataset](https://img.shields.io/badge/Dataset-Kaggle_Credit_Fraud-20BEFF?style=for-the-badge&logo=kaggle&logoColor=white)](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
 [![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
 [![Status](https://img.shields.io/badge/Pipeline-Production_Ready-22C55E?style=for-the-badge&logo=checkmarx&logoColor=white)](#)
