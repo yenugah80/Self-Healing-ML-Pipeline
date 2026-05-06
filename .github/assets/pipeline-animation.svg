@@ -1,74 +1,22 @@
 <svg width="1280" height="420" viewBox="0 0 1280 420" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Animated self-healing machine learning pipeline</title>
-  <desc id="desc">A clean animated hero showing the self-healing ML loop from streaming data to monitoring, decision, retraining, and deployment.</desc>
+  <title id="title">Self-healing machine learning pipeline</title>
+  <desc id="desc">A clean zero-delay dotted-arrow pipeline showing streaming, monitoring, agent decision, retraining, and deployment.</desc>
 
   <style>
     .title { font: 800 46px Inter, Segoe UI, Arial, sans-serif; fill: #f7fbff; letter-spacing: 0; }
     .subtitle { font: 500 18px Inter, Segoe UI, Arial, sans-serif; fill: #b5c8d9; letter-spacing: 0; }
     .stage { font: 800 18px Inter, Segoe UI, Arial, sans-serif; fill: #f7fbff; letter-spacing: 0; }
-    .stage-sub { font: 500 13px Inter, Segoe UI, Arial, sans-serif; fill: #9fb5c8; letter-spacing: 0; }
+    .stage-sub { font: 500 13px Inter, Segoe UI, Arial, sans-serif; fill: #aec1d2; letter-spacing: 0; }
     .chip { font: 800 13px Inter, Segoe UI, Arial, sans-serif; fill: #061322; letter-spacing: 0; }
     .metric { font: 800 15px Inter, Segoe UI, Arial, sans-serif; fill: #dff7ff; letter-spacing: 0; }
     .panel { fill: #0f1d2c; stroke: #2b435a; stroke-width: 1.2; }
-    .node { fill: #10263a; stroke: #3c5870; stroke-width: 1.4; }
-    .stage-group { opacity: .48; animation: stage-focus 10s ease-in-out infinite; transform-origin: center; }
-    .step-1 { animation-delay: 0s; }
-    .step-2 { animation-delay: 2s; }
-    .step-3 { animation-delay: 4s; }
-    .step-4 { animation-delay: 6s; }
-    .step-5 { animation-delay: 8s; }
-    .stage-group .node { animation: node-focus 10s ease-in-out infinite; }
-    .step-1 .node { animation-delay: 0s; }
-    .step-2 .node { animation-delay: 2s; }
-    .step-3 .node { animation-delay: 4s; }
-    .step-4 .node { animation-delay: 6s; }
-    .step-5 .node { animation-delay: 8s; }
-    .connector-track {
-      stroke: #263d52;
-      stroke-width: 4;
-      stroke-linecap: round;
-      stroke-dasharray: 4 12;
-      opacity: .65;
-    }
+    .node { fill: #10263a; stroke: #35e5d4; stroke-width: 2.4; }
     .connector {
       stroke: url(#flow);
       stroke-width: 5;
       stroke-linecap: round;
-      stroke-dasharray: 6 13;
-      stroke-dashoffset: 160;
+      stroke-dasharray: 8 14;
       marker-end: url(#arrow);
-      opacity: 0;
-      animation: segment-flow 10s ease-in-out infinite;
-    }
-    .seg-1 { animation-delay: 0s; }
-    .seg-2 { animation-delay: 2s; }
-    .seg-3 { animation-delay: 4s; }
-    .seg-4 { animation-delay: 6s; }
-    .spark { animation: spark 10s ease-in-out infinite; transform-origin: center; }
-    @keyframes segment-flow {
-      0% { opacity: 1; stroke-dashoffset: 48; }
-      16% { opacity: 1; stroke-dashoffset: -48; }
-      22% { opacity: 0; stroke-dashoffset: -36; }
-      24%, 100% { opacity: 0; stroke-dashoffset: 48; }
-    }
-    @keyframes stage-focus {
-      0%, 100% { opacity: .48; transform: translateY(0); }
-      4%, 16% { opacity: 1; transform: translateY(-3px); }
-      24% { opacity: .48; transform: translateY(0); }
-    }
-    @keyframes node-focus {
-      0%, 100% { fill: #10263a; stroke: #3c5870; stroke-width: 1.4; }
-      4%, 16% { fill: #123b38; stroke: #35e5d4; stroke-width: 3; }
-      24% { fill: #10263a; stroke: #3c5870; stroke-width: 1.4; }
-    }
-    @keyframes spark {
-      0%, 76%, 100% { transform: scale(.72); opacity: .2; }
-      84%, 96% { transform: scale(1.18); opacity: 1; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .connector, .stage-group, .stage-group .node, .spark { animation: none; }
-      .connector { opacity: 1; stroke-dashoffset: 0; }
-      .stage-group { opacity: 1; }
     }
   </style>
 
@@ -78,16 +26,11 @@
       <stop offset=".55" stop-color="#0b2235"/>
       <stop offset="1" stop-color="#0f3447"/>
     </linearGradient>
-    <linearGradient id="flow" x1="168" y1="0" x2="1112" y2="0" gradientUnits="userSpaceOnUse">
+    <linearGradient id="flow" x1="180" y1="0" x2="1100" y2="0" gradientUnits="userSpaceOnUse">
       <stop stop-color="#49a6ff"/>
       <stop offset=".5" stop-color="#35e5d4"/>
       <stop offset="1" stop-color="#4ade80"/>
     </linearGradient>
-    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-      <feGaussianBlur stdDeviation="7" result="blur"/>
-      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.2 0 0 0 0 0.85 0 0 0 0 0.95 0 0 0 0.55 0"/>
-      <feBlend in="SourceGraphic" mode="screen"/>
-    </filter>
     <marker id="arrow" markerWidth="12" markerHeight="12" refX="9" refY="6" orient="auto" markerUnits="strokeWidth">
       <path d="M2 2 L10 6 L2 10 Z" fill="#35e5d4"/>
     </marker>
@@ -109,44 +52,40 @@
 
   <g transform="translate(72 206)">
     <rect width="1136" height="128" rx="28" class="panel"/>
-    <path class="connector-track" d="M130 68 H286"/>
-    <path class="connector-track" d="M358 68 H514"/>
-    <path class="connector-track" d="M586 68 H742"/>
-    <path class="connector-track" d="M814 68 H970"/>
-    <path class="connector seg-1" d="M130 68 H286"/>
-    <path class="connector seg-2" d="M358 68 H514"/>
-    <path class="connector seg-3" d="M586 68 H742"/>
-    <path class="connector seg-4" d="M814 68 H970"/>
 
-    <g class="stage-group step-1" transform="translate(58 24)">
-      <text x="-2" y="20" class="stage">Streaming</text>
-      <circle class="node pulse" cx="36" cy="44" r="26"/>
-      <text x="4" y="98" class="stage-sub">18 batches</text>
-    </g>
+    <path class="connector" d="M142 68 H282"/>
+    <path class="connector" d="M370 68 H510"/>
+    <path class="connector" d="M598 68 H738"/>
+    <path class="connector" d="M826 68 H966"/>
 
-    <g class="stage-group step-2" transform="translate(286 24)">
-      <text x="-6" y="20" class="stage">Monitoring</text>
+    <g transform="translate(58 24)">
+      <text x="-8" y="20" class="stage">Streaming</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="-18" y="98" class="stage-sub">F1, ROC-AUC, KL</text>
+      <text x="0" y="98" class="stage-sub">18 batches</text>
     </g>
 
-    <g class="stage-group step-3" transform="translate(514 24)">
-      <text x="-30" y="20" class="stage">Agent Decision</text>
+    <g transform="translate(286 24)">
+      <text x="-14" y="20" class="stage">Monitoring</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="-12" y="98" class="stage-sub">continue or heal</text>
+      <text x="-20" y="98" class="stage-sub">F1, ROC-AUC, KL</text>
     </g>
 
-    <g class="stage-group step-4" transform="translate(742 24)">
-      <text x="-14" y="20" class="stage">Retraining</text>
+    <g transform="translate(514 24)">
+      <text x="-38" y="20" class="stage">Agent Decision</text>
       <circle class="node" cx="36" cy="44" r="26"/>
-      <text x="-18" y="98" class="stage-sub">LR, RF, XGBoost</text>
+      <text x="-14" y="98" class="stage-sub">continue or heal</text>
     </g>
 
-    <g class="stage-group step-5" transform="translate(970 24)">
-      <text x="2" y="20" class="stage">Deploy</text>
-      <circle class="node pulse" cx="36" cy="44" r="26"/>
-      <circle class="spark" cx="36" cy="44" r="8" fill="#4ade80" filter="url(#glow)"/>
-      <text x="-22" y="98" class="stage-sub">feedback loop</text>
+    <g transform="translate(742 24)">
+      <text x="-20" y="20" class="stage">Retraining</text>
+      <circle class="node" cx="36" cy="44" r="26"/>
+      <text x="-20" y="98" class="stage-sub">LR, RF, XGBoost</text>
+    </g>
+
+    <g transform="translate(970 24)">
+      <text x="-4" y="20" class="stage">Deploy</text>
+      <circle class="node" cx="36" cy="44" r="26"/>
+      <text x="-24" y="98" class="stage-sub">feedback loop</text>
     </g>
   </g>
 
